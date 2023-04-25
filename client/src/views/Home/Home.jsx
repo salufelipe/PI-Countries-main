@@ -12,6 +12,8 @@ const Home = () =>{
     useEffect(()=>{
         dispatch(getCountries());
         dispatch(getActivities());
+        console.log("Este es el console.log de home")
+        
          },[dispatch])
          return(
         <>

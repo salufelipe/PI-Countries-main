@@ -4,3 +4,15 @@
     align-items: center;
     
 }
+.button {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    background-color: #aeaeae;
+    border: none;
+    border-radius: .8rem;
+    margin-top: 2rem;
+    padding: .6rem;
+    /* width: 300px; */
+    transition: .4s;
+  }

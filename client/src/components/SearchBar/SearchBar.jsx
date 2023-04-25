@@ -10,7 +10,7 @@ export default function SearchBar (){
     const dispatch = useDispatch();
     const paises = useSelector(state=>state.paisesAll);
     console.log(paises)
-    const nombresPaises = paises.map(pais=> pais.name);
+    // const nombresPaises = paises.map(pais=> pais.name);
 
     const onInputChange = (evento) =>{
         setNombrePais(evento.target.value);

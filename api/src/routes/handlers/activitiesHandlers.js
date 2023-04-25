@@ -2,9 +2,9 @@ const {createActivity, getActivities} = require("../controllers/activitiesContro
 
 const createActivityHandler = async (req, res)=>{
     
-    const {nombre, dificultad, duracion, temporada, idPais } = req.body;
+    const {nombre, dificultad, duracion, temporada, countries } = req.body;
     try {
-        const newActivity = await createActivity(nombre, dificultad, duracion, temporada, idPais);
+        const newActivity = await createActivity(nombre, dificultad, duracion, temporada, countries);
         res.status(201).json("Actividad creada con éxito");
     } catch (error) {
         res.status(400).json({error: error.message});

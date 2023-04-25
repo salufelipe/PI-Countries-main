@@ -68,7 +68,18 @@ backdrop-filter: blur(2px);
     /* width: 300px; */
     transition: .4s;
   }
-  
+  .button1 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    background-color: #aeaeae;
+    border: none;
+    border-radius: .8rem;
+    margin-top: rem;
+    padding: 2px;
+    /* width: 300px; */
+    transition: .4s;
+  }
   .button:hover {
     cursor: pointer;
     background-color: #dedede;

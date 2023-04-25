@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY, ORDER_BY_POBLACION, ORDER_ALPHABETICALLY, GET_ACTIVITIES, RESET, GET_COUNTRY, GET_COUNTRIES_BY_NAME } from "./actions";
+import { GET_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY, ORDER_BY_POBLACION, ORDER_ALPHABETICALLY, GET_ACTIVITIES, CREATE_ACTIVITY, RESET, GET_COUNTRY, GET_COUNTRIES_BY_NAME } from "./actions";
 
 const initialState  = {
     // paises: [
@@ -105,41 +105,42 @@ const initialState  = {
     //     ],
     paises : [],
     paisesAll: [],
-    actividades : [{
-        "nombre":"Tomar mate",
-        "dificultad":"2",
-        "duracion":"1",
-        "temporada":"Autumn",
-        "idPais":["URY", "PRY", "ARG", "SYR", "CHL"]
-    },
-    {
-        "nombre":"Ciclismo",
-        "dificultad":"5",
-        "duracion":"6",
-        "temporada":"Summer",
-        "idPais":["FRA", "UNI", "DNK", "KHM", "NOR", "ECU", "PRT", "NLD", "AUT"]
-    },
-    {
-        "nombre":"Parapente",
-        "dificultad":"4",
-        "duracion":"8",
-        "temporada":"Spring",
-        "idPais":["ARG", "NPL", "TUR", "NZL", "ESP"]
-    },
-    {
-        "nombre":"Ski",
-        "dificultad":"4",
-        "duracion":"6",
-        "temporada":"Winter",
-        "idPais":["CHE", "UNI", "CAN", "ARG", "FRA", "JPN", "CHL", "NZL"]
-    },
-    {
-        "nombre":"Budismo",
-        "dificultad":"5",
-        "duracion":"2",
-        "temporada":"Winter",
-        "idPais":["JPN", "URY", "IND", "IOT"]
-    }],
+    actividades: [],
+    //  
+    //     "nombre":"Tomar mate",
+    //     "dificultad":"2",
+    //     "duracion":"1",
+    //     "temporada":"Autumn",
+    //     "idPais":["URY", "PRY", "ARG", "SYR", "CHL"]
+    // },
+    // {
+    //     "nombre":"Ciclismo",
+    //     "dificultad":"5",
+    //     "duracion":"6",
+    //     "temporada":"Summer",
+    //     "idPais":["FRA", "UNI", "DNK", "KHM", "NOR", "ECU", "PRT", "NLD", "AUT"]
+    // },
+    // {
+    //     "nombre":"Parapente",
+    //     "dificultad":"4",
+    //     "duracion":"8",
+    //     "temporada":"Spring",
+    //     "idPais":["ARG", "NPL", "TUR", "NZL", "ESP"]
+    // },
+    // {
+    //     "nombre":"Ski",
+    //     "dificultad":"4",
+    //     "duracion":"6",
+    //     "temporada":"Winter",
+    //     "idPais":["CHE", "UNI", "CAN", "ARG", "FRA", "JPN", "CHL", "NZL"]
+    // },
+    // {
+    //     "nombre":"Budismo",
+    //     "dificultad":"5",
+    //     "duracion":"2",
+    //     "temporada":"Winter",
+    //     "idPais":["JPN", "URY", "IND", "IOT"]
+    // }],
     detail: {}
 };
 
@@ -150,27 +151,29 @@ const rootReducer = (state=initialState, action) =>{
             paises: action.payload,
             paisesAll: action.payload};
     case GET_ACTIVITIES: 
-    return {...state, 
-                actividades: [...state.actividades, action.payload]}
+    
+    return {...state, actividades: action.payload}
         ;
+        
+    case FILTER_BY_ACTIVITY:
+        const losPaise = state.paisesAll;
+        const elNombre  = action.payload;
+        const lasAct = state.actividades;
+        const laAct = lasAct.find(p=>p.nombre === elNombre)
+        const ids = laAct.countries.map(country => country.id);
+        console.log(ids)
+        const losBu = losPaise.filter(pa => ids.includes(pa.id))
+        return{...state,
+                  paises: losBu  }
+    ;
+    case CREATE_ACTIVITY:
+        return {...state};
     case GET_COUNTRIES_BY_NAME:
         return {...state,
                 paises: action.payload};
     case GET_COUNTRY:
         return {...state, detail: action.payload};
         
-    case FILTER_BY_ACTIVITY:
-        const losPaise = state.paisesAll;
-        const lasactividades = state.actividades;
-        const lactividad = lasactividades.find((actividad)=> actividad.nombre===action.payload);
-        const ids = lactividad.idPais;
-        
-        const paisesPorActividad = action.payload === "" ? state.paisesAll : losPaise.filter((pais)=>{return ids.includes(pais.id)})
-            
-    return{
-        ...state, paises: paisesPorActividad
-    };
-
     case FILTER_BY_CONTINENT:
         const paises = state.paisesAll;
         const paisesFiltered = action.payload === "" ? state.paisesAll : paises.filter(pa => pa.continente === action.payload );

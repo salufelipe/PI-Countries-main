@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 
-import {Home, Landing, Detail, Form} from "./views";
+import {Home, Landing, Detail, Form, Activities} from "./views";
 
 import { Route } from 'react-router-dom';
 
@@ -16,6 +16,7 @@ function App() {
       <Route path="/home" render={()=> <Home />} />
       <Route path="/detail/:id" render={()=> <Detail />} />
       <Route path="/create" render={()=> <Form />} />
+      <Route path="/activities" render={()=> <Activities />} />
       
     </div>
   );

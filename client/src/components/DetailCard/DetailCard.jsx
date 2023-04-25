@@ -17,17 +17,8 @@ const Card = (props) =>{
             <h2 className={style.h2}>Area: {detail?.area}</h2>
             <h2 className={style.h2}>Poblacion: {detail?.poblacion}</h2>
             </div>
-            {
-            // detail?.activities.length && <div className={style.container}>
-            // <h2>Acitividades turísticas para disfrutar en {detail?.name}</h2>
-            //      <h2>Nombre: {detail?.activities[0].nombre}</h2>
-            //     <h2>Dificultad: {detail?.activities[0].dificultad}</h2>
-            //     <h2>Duracion: {detail?.activities[0].duracion}</h2>
-            //     <h2>Temporada: {detail?.activities[0].temporada}</h2>             
-            //  </div>
-             
-             }
-            </>
+
+        </>
     )
 }
 

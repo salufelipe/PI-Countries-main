@@ -7,8 +7,6 @@ const activitiesRouter = Router();
 
 
 
-//? GET /activities
-//*obtiene un array de objetos actividades
 
 activitiesRouter.post("/", createActivityHandler);
 

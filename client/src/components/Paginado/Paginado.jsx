@@ -16,7 +16,7 @@ return(
                 numPaginas.map(num =>{
                     
                   return  <li className={style.button} key={num}>
-                    <button  onClick={()=>{paginado(num)}}>{num}</button>
+                    <button onClick={()=>{paginado(num)}}>{num}</button>
                     </li>
                                 })}
             </ul>

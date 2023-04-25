@@ -2,14 +2,17 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
 import style from "./CardsContainter.module.css";
-import Paginado from "./Paginado";
-import { filterByContinent, orderByPoblacion, orderAlphabetically, filterByActivity } from "../../redux/actions";
+import Paginado from "../Paginado/Paginado";
+import { filterByContinent, orderByPoblacion, orderAlphabetically, filterByActivity, getCountries } from "../../redux/actions";
 
 
 
 const CardsContainer = () =>{
    
     const actividades = useSelector(state=>state.actividades);
+    console.log(actividades)
+
+    
 
 	const paises = useSelector(state=>state.paises);
     const dispatch = useDispatch();
@@ -32,8 +35,11 @@ const CardsContainer = () =>{
         setPaginaActual(1);
     }
     function handleFilterActivities(event){
+        if(event.target.value !== "Actividades"){
         dispatch(filterByActivity(event.target.value));
-        setPaginaActual(1);
+        setPaginaActual(1);}
+        else{ dispatch(getCountries());
+                setPaginaActual(1);}
     }
 
     function handleSortPob(event){
@@ -54,29 +60,30 @@ return(
     {/* <span className={style.orden}>Ordenamiento:</span> */}
 
 <select className={style.select} onChange={(e)=>handleFilterContinent(e)}>
-    <option value="" >Continente</option>
-    <option value="South America" >South America</option>
-    <option value="North America" >North America</option>
-    <option value="Antarctica" >Antarctica</option>
-    <option value="Europe" >Europe</option>
-    <option value="Oceania" >Oceania</option>
-    <option value="Asia" >Asia</option>
-    <option value="Africa" >Africa</option>
+    <option key= "1" value="" >Continente</option>
+    <option key= "2" value="South America" >South America</option>
+    <option key= "3" value="North America" >North America</option>
+    <option key= "4" value="Antarctica" >Antarctica</option>
+    <option key= "5" value="Europe" >Europe</option>
+    <option key= "6" value="Oceania" >Oceania</option>
+    <option key= "7" value="Asia" >Asia</option>
+    <option key= "8" value="Africa" >Africa</option>
 </select>
 
 <select className={style.select} 
 onChange={(e)=>handleFilterActivities(e)}
  >
-            <option value="" >Actividades</option>
+            <option value="Actividades" >Actividades</option>
               {actividades.map(actividad=>{
-                return <option value={actividad.id} key={actividad.id}>{actividad.nombre}</option>
+                    console.log(actividad.nombre)
+                return <option value={actividad.nombre} key={actividad.id}>{actividad.nombre}</option>
                 })}
 </select>
 
 <select className={style.select} onChange={(event)=>handleSortAlp(event)}>
-    <option value="">Alfabético</option>
-    <option value="asc">A-Z</option>
-    <option value="desc">Z-A</option>
+    <option key="1" value="">Alfabético</option>
+    <option key="2" value="asc">A-Z</option>
+    <option key="3" value="desc">Z-A</option>
 </select>
 
 
