@@ -16,12 +16,12 @@ const Home = () =>{
         
          },[dispatch])
          return(
-        <>
+        <div className={style.granContainer}>
             
             <h1 className={style.titulo}>Países del mundo</h1>
             <CardsContainer/>
             
-        </>
+        </div>
     )
 }
 

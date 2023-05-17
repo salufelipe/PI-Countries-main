@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { getCountryByName } from "../../redux/actions";
+import { getCountryByName, getCountries } from "../../redux/actions";
 import style from "./SearchBar.module.css";
 
 
 export default function SearchBar (){
+
 
     const [nombrePais, setNombrePais ] = useState('');
     const dispatch = useDispatch();
@@ -23,6 +24,8 @@ export default function SearchBar (){
         setNombrePais('');
         // alert("No conocemos ese país");       
     }
+
+    
     
 
     return(<div>

@@ -120,7 +120,7 @@ const Form = () =>{
             <div className={style.label}>
             <label >Nombre: </label>
             <input className={style.input} name="nombre" type="text" value={form.nombre} onChange={changeHandler}/>
-            {errors.nombre && <span>{errors.nombre}</span>}
+            {/* {errors.nombre && <span>{errors.nombre}</span>} */}
             </div>
             
 
@@ -129,7 +129,7 @@ const Form = () =>{
             <label >Duración: </label>
             <input name="duracion" type="range" min="1" max="12" value={form.duracion} onChange={changeHandler}/>
             {form.duracion && <><br/><label>{form.duracion}:00 horas</label></>}
-            {/* <input name="duracion" type="text" value={form.duracion} onChange={changeHandler}/> */}
+            <input name="duracion" type="text" value={form.duracion} onChange={changeHandler}/>
             </div>
 
             <div  className={style.label}>

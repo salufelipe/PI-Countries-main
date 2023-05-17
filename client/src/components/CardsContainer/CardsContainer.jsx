@@ -93,7 +93,7 @@ onChange={(e)=>handleFilterActivities(e)}
     <option value="desc">Descendente</option>
 </select>
             </nav>
-        
+        <div className={style.containerTarjetas}>
         {paisesPActual.map(pais=>{
             return <Card
             key={pais.id}
@@ -103,14 +103,15 @@ onChange={(e)=>handleFilterActivities(e)}
             img={pais.img}
             />
         })}
-
+        </div>
+        <div className={style.containerPaginado}>
         <Paginado
         paisesPagina={paisesPagina}
         paises={paises.length}
         paginado={paginado}
         
         className={style.paginado}/>
-
+        </div>
         </div>
     )
 }

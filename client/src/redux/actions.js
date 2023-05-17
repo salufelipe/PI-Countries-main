@@ -12,11 +12,15 @@ export const ORDER_ALPHABETICALLY = "ORDER_ALPHABETICALLY";
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 export const RESET = "RESET";
 export const GET_COUNTRIES_BY_NAME = "GET_COUNTRIES_BY_NAME";
-// export const GET_ACTIVITIES = "GET_ACTIVITIES";
+
+
 export const getCountries = () =>{
 
     return async function(dispatch){
         const paisesDB = await axios.get("http://localhost:3001/countries/");
+        // const paisesDB = fetch("http://localhost:3001/countries/")
+        // .then(response=>response.json())
+        // .then(data=> {dispatch({type : GET_COUNTRIES, payload: data})})
         console.log(paisesDB);
         const paises = await paisesDB.data;
         dispatch({ type: GET_COUNTRIES, payload: paises})
@@ -31,7 +35,16 @@ export const getCountryByName =  (nombrePais) =>{
                     payload: paisesBuscados});
 }
 }
-
+// export const getCountryByName =  (nombrePais) =>{
+//     return function(dispatch){
+//         axios.get(`http://localhost:3001/countries?name=${nombrePais}`)
+//         .then(res=>{
+//             dispatch({type: GET_COUNTRIES_BY_NAME,
+//                         payload: res.data});
+            
+//         })
+// }
+// }
 
 export const getCountry = (id) =>{
 
